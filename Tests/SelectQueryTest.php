@@ -64,6 +64,12 @@ class SelectQueryTest extends \PHPUnit_Framework_TestCase {
         $actual = $this->query->getSQLQuery();
         $expected = 'SELECT name,age FROM employee WHERE age > 20 AND name = "Ayyoub" ORDER BY name';
         $this->assertEquals($expected, $actual);
+        $this->query = new SelectQuery();
+        $this->query->addFrom('table')->addField('f1')->addField('f2')
+                ->addWhere('f1 < value');
+        $actual = $this->query->getSQLQuery();
+        $expected = 'SELECT f1,f2 FROM table WHERE f1 < value';
+        $this->assertEquals($expected, $actual);
     }
 
 }
