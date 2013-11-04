@@ -79,10 +79,7 @@ class SelectQuery {
      * @return string The string of the part.
      */
     private function getPart($keyword, $glue, $var) {
-        if (count($this->$var) > 0) {
-            return $keyword . implode($glue, $this->$var);
-        }
-        return '';
+        return empty($this->$var) ? '' : $keyword . implode($glue, $this->$var);
     }
 
     private function getFieldsPart() {
