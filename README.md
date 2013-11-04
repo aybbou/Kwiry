@@ -20,7 +20,7 @@ $query->addField('name')
 
 $query->addFrom('employee');
 ```
-And finally you can get the SQL query string to use it when querying a database.
+You can then get the SQL query string to use it when querying a database.
 ```php 
 $queryString = $query->getSQLQuery();
 echo $queryString;
