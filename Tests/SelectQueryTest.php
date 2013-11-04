@@ -57,5 +57,13 @@ class SelectQueryTest extends \PHPUnit_Framework_TestCase {
         $expected = ' ORDER BY f1';
         $this->assertEquals($expected, $actual);
     }
+    
+    public function testGetSQLQuery(){
+        $this->query->addField('name')->addFrom('employee')->addField('age')
+                ->addWhere('age > 20')->addWhere('name = "Ayyoub"')->addOrderBy('name');
+        $actual = $this->query->getSQLQuery();
+        $expected = 'SELECT name,age FROM employee WHERE age > 20 AND name = "Ayyoub" ORDER BY name';
+        $this->assertEquals($expected, $actual);
+    }
 
 }
