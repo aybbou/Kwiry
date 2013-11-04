@@ -82,23 +82,23 @@ class SelectQuery {
         return empty($this->$var) ? '' : $keyword . implode($glue, $this->$var);
     }
 
-    private function getFieldsPart() {
+    public function getFieldsPart() {
         return $this->getPart('SELECT ', ',', 'fields');
     }
 
-    private function getFromPart() {
+    public function getFromPart() {
         return $this->getPart(' FROM ', ',', 'from');
     }
 
-    private function getWherePart() {
+    public function getWherePart() {
         return $this->getPart(' WHERE ', ' AND ', 'where');
     }
 
-    private function getGroupByPart() {
+    public function getGroupByPart() {
         return $this->getPart(' GROUP BY ', ',', 'groupBy');
     }
 
-    private function getOrderByPart() {
+    public function getOrderByPart() {
         return $this->getPart(' ORDER BY ', ',', 'orderBy');
     }
     
