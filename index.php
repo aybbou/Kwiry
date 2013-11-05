@@ -1,13 +1,14 @@
 <?php
 
-require_once 'SelectQuery.php';
+require_once 'src/autoload.php';
 
-use Ayb\Kwiry\SelectQuery;
+$query = Kwiry\QueryFactory::create('select');
 
-$query = new SelectQuery();
-
-$query->addField('name')->addOrderBy('name')->addWhere('name = "Ayyoub"')
-        ->addField('age')->addWhere('age > 20')
-        ->addFrom('employees');
+$query->addField('name')
+        ->addField('age')
+        ->addFrom('employees')
+        ->addWhere('age > 20')
+        ;
 
 echo $query->getSQLQuery();
+        
