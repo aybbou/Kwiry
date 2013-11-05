@@ -7,7 +7,7 @@ require_once __DIR__ . '/../../src/autoload.php';
 use Kwiry\SelectQuery;
 
 /**
- * Description of SelectQueryTest
+ * Test of SelectQueryTest
  *
  * @author Ayyoub
  */

@@ -24,8 +24,8 @@ class InsertQuery extends Query {
         $this->fields[] = $field;
         return $this;
     }
-    
-    public function addValue($value){
+
+    public function addValue($value) {
         $this->values[] = $value;
         return $this;
     }
@@ -36,13 +36,13 @@ class InsertQuery extends Query {
 
     public function getFieldsPart() {
         $part = $this->getPart(' (', ',', 'fields');
-        return  $part == '' ? '' : $part. ') ';
+        return $part == '' ? '' : $part . ') ';
     }
 
     public function getValuesPart() {
         return $this->getPart(' values (', ',', 'values') . ') ';
     }
-    
+
     public function getFromPart() {
         return $this->getPart('INSERT INTO ', ',', 'from');
     }
