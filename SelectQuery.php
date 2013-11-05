@@ -36,7 +36,7 @@ class SelectQuery {
         $this->from[] = $from;
         return $this;
     }
-    
+
     /**
      * Adds where conditions to the SQL query.
      * 
@@ -47,7 +47,7 @@ class SelectQuery {
         $this->where[] = $condition;
         return $this;
     }
-    
+
     /**
      * Adds group by clauses to the SQL query.
      * 
@@ -58,7 +58,7 @@ class SelectQuery {
         $this->groupBy[] = $groupBy;
         return $this;
     }
-    
+
     /**
      * Adds order by clauses to the SQL query.
      * 
@@ -69,7 +69,7 @@ class SelectQuery {
         $this->orderBy[] = $orderBy;
         return $this;
     }
-    
+
     /**
      * Get a specific part of the SQL query.
      * 
@@ -101,7 +101,7 @@ class SelectQuery {
     public function getOrderByPart() {
         return $this->getPart(' ORDER BY ', ',', 'orderBy');
     }
-    
+
     /**
      * Get the string of the SQL query.
      * 
