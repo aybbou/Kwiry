@@ -1,4 +1,4 @@
-Kwiry
+Kwiry <img src="https://travis-ci.org/aybbou/Kwiry.png?branch=master" alt="travis build"/>
 =====
 
 This is just an experiment.
