@@ -11,7 +11,7 @@ use Kwiry\DeleteQuery;
  *
  * @author Ayyoub
  */
-abstract class QueryFactory {
+abstract class Kwiry {
 
     public static function create($query) {
 
@@ -29,5 +29,3 @@ abstract class QueryFactory {
     }
 
 }
-
-?>

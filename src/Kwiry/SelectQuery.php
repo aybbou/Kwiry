@@ -11,70 +11,55 @@ use Kwiry\Query;
  */
 class SelectQuery extends Query {
 
-    protected $fields = array();
     protected $groupBy = array();
     protected $orderBy = array();
+    protected $where = array();
 
-    /**
-     * Adds fields to the SQL query.
-     * 
-     * @param string A filed to be added to the query
-     * @return \Kwiry\SelectQuery
-     */
-    public function addField($field) {
-        $this->fields[] = $field;
-        return $this;
-    }
-
-    /**
-     * Adds group by clauses to the SQL query.
-     * 
-     * @param string A group by clause element.
-     * @return \Kwiry\SelectQuery
-     */
     public function addGroupBy($groupBy) {
         $this->groupBy[] = $groupBy;
         return $this;
     }
 
-    /**
-     * Adds order by clauses to the SQL query.
-     * 
-     * @param string An order by clause element.
-     * @return \Kwiry\SelectQuery
-     */
     public function addOrderBy($orderBy) {
         $this->orderBy[] = $orderBy;
         return $this;
+    }
+
+    public function addFrom($from) {
+        return $this->addTable($from);
+    }
+
+    public function addWhere($where) {
+        $this->where[] = $where;
+        return $this;
+    }
+
+    protected function getWhere() {
+        return $this->getPart(' WHERE ', 'AND', 'where');
     }
 
     protected function getPart($keyword, $glue, $var) {
         return empty($this->$var) ? '' : $keyword . implode($glue, $this->$var);
     }
 
-    public function getFieldsPart() {
-        return $this->getPart('SELECT ', ',', 'fields');
-    }
-
-    public function getGroupByPart() {
+    protected function getGroupBy() {
         return $this->getPart(' GROUP BY ', ',', 'groupBy');
     }
 
-    public function getOrderByPart() {
+    protected function getOrderBy() {
         return $this->getPart(' ORDER BY ', ',', 'orderBy');
     }
 
-    /**
-     * Get the string of the SQL query.
-     * 
-     * @return string the sting of the SQL query
-     */
-    public function getSQLQuery() {
-        return $this->getFieldsPart()
-                . $this->getFromPart()
-                . $this->getWherePart()
-                . $this->getGroupByPart()
-                . $this->getOrderByPart();
+    protected function getFrom() {
+        return $this->getTables();
+    }
+
+    public function getSQL() {
+        return $this->getFields()
+                . $this->getFrom()
+                . $this->getWhere()
+                . $this->getGroupBy()
+                . $this->getOrderBy();
     }
 
 }
