@@ -11,48 +11,38 @@ use Kwiry\Query;
  */
 class InsertQuery extends Query {
 
-    protected $fields = array();
     protected $values = array();
-
-    /**
-     * Adds fields to the SQL query.
-     * 
-     * @param string A filed to be added to the query
-     * @return \Kwiry\SelectQuery
-     */
-    public function addField($field) {
-        $this->fields[] = $field;
-        return $this;
-    }
 
     public function addValue($value) {
         $this->values[] = $value;
         return $this;
     }
 
+    public function addInto($into) {
+        return $this->addTable($into);
+    }
+
     protected function getPart($keyword, $glue, $var) {
         return empty($this->$var) ? '' : $keyword . implode($glue, $this->$var);
     }
 
-    public function getFieldsPart() {
+    protected function getFields() {
         $part = $this->getPart(' (', ',', 'fields');
         return $part == '' ? '' : $part . ') ';
     }
 
-    public function getValuesPart() {
+    protected function getValues() {
         return $this->getPart(' values (', ',', 'values') . ') ';
     }
 
-    public function getFromPart() {
-        return $this->getPart('INSERT INTO ', ',', 'from');
+    protected function getInto() {
+        return $this->getPart('INSERT INTO ', ',', 'tables');
     }
 
-    public function getSQLQuery() {
-        return $this->getFromPart()
-                . $this->getFieldsPart()
-                . $this->getValuesPart();
+    public function getSQL() {
+        return $this->getInto()
+                . $this->getFields()
+                . $this->getValues();
     }
 
 }
-
-?>

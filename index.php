@@ -2,7 +2,7 @@
 
 require_once 'src/autoload.php';
 
-$query = Kwiry\QueryFactory::create('select');
+$query = Kwiry\Kwiry::create('select');
 
 $query->addField('name')
         ->addField('age')
@@ -10,5 +10,5 @@ $query->addField('name')
         ->addWhere('age > 20')
         ;
 
-echo $query->getSQLQuery();
+echo $query->getSQL();
         
