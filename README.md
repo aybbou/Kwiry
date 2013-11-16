@@ -5,4 +5,4 @@ This is just an experiment.
 
 A simple SQL query builder. 
 
-index.php contains a usage example.
+`index.php` contains a usage example.
