@@ -7,7 +7,7 @@ use Kwiry\InsertQuery;
 use Kwiry\DeleteQuery;
 
 /**
- * The facetory of all Queries.
+ * The factory of all Queries.
  *
  * @author Ayyoub
  */
